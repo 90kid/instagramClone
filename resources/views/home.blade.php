@@ -7,15 +7,15 @@
             <img class="rounded-circle" style="height: 200px; width: 200px" src="https://upload.wikimedia.org/wikipedia/commons/d/de/Windows_live_square.JPG"/>
         </div>
         <div class="col-9 pt-5">
-            <div><h1>Dawid Koziej</h1></div>
+            <div><h1>{{$user->username}}</h1></div>
             <div class="d-flex">
-                <div class="pr-5"> <strong>Dawid</strong> </div>
-                <div class="pr-5"> <strong>Dawid</strong> </div>
-                <div class="pr-5"> <strong>Dawid</strong> </div>
+                <div class="pr-5"> <strong>d</strong> </div>
+                <div class="pr-5"> <strong>d</strong> </div>
+                <div class="pr-5"> <strong>d</strong> </div>
             </div>
-            <div class="pt-5 font-weight-bold">Dawid Koziej</div>
-            <div>taesfasfsafafakoasmgnkalngajbgajgbalgnaslgbaslgbalgkbalsbgsajgbasljgbasljgbalgblasbsalbgalsbgalgbla</div>
-            <div><a href="google.com">google.com</a> </div>
+            <div class="pt-5 font-weight-bold">{{$user->profile->title}}</div>
+            <div>{{$user->profile->description}}</div>
+            <div><a href="{{$user->profile->url}}">{{$user->profile->url ?? 'N/A'}}</div>
         </div>
     </div>
     <div class="row pt-5">
