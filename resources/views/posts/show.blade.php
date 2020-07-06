@@ -4,11 +4,34 @@
 <div class="container">
     <div class="row">
         <div class="col-8">
-            <img src="/storage/{{$post->orginalImage}}"/>
+            <img src="{{ $post->postImageNormal() }}" class="w-100">
         </div>
         <div class="col-4">
-            <h3>{{$post->user->username}}</h3>
-            <p>{{$post->title}}</p>
+            <div>
+                <div class="d-flex align-items-center">
+                    <div class="pr-3">
+                        <img src="{{ $post->user->profile->profileImageResize()}}" class="rounded-circle w-100" style="max-width: 70px;">
+                    </div>
+                    <div>
+                        <div class="font-weight-bold">
+                            <a href="/profile/{{ $post->user->id }}">
+                                <span class="text-dark">{{ $post->user->username }}</span>
+                            </a>
+                            <a href="#" class="pl-3">Follow</a>
+                        </div>
+                    </div>
+                </div>
+
+                <hr>
+
+                <p>
+                    <span class="font-weight-bold">
+                        <a href="/profile/{{ $post->user->id }}">
+                            <span class="text-dark">{{ $post->user->username }}</span>
+                        </a>
+                    </span> {{ $post->title }}
+                </p>
+            </div>
         </div>
     </div>
 </div>
