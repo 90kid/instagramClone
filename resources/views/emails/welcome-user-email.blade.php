@@ -1,9 +1,9 @@
 @component('mail::message')
-# Introduction
+# Hello,
 
-The body of your message.
+:>
 
-@component('mail::button', ['url' => ''])
+@component('mail::button', ['url' => 'https://laravel.com/docs/7.x/cache'])
 Button Text
 @endcomponent
 
