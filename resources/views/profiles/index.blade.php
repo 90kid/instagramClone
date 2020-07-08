@@ -23,9 +23,9 @@
                     <a href="/profile/{{$user->id}}/edit">Edit profile</a>
                 @endcan
                 <div class="d-flex">
-                    <div class="pr-5"><strong>{{$user->posts->count()}} </strong> {{$user->posts->count() == 1 ? 'post' : 'posts'}}</div>
-                    <div class="pr-5"> {{$user->profile->followers->count()}} {{$user->profile->followers->count() == 1 ? 'follower': 'followers'}} </div>
-                    <div class="pr-5"><strong>{{$user->following->count()}}</strong> following</div>
+                    <div class="pr-5"><strong>{{$postCount}} </strong> {{$postCount == 1 ? 'post' : 'posts'}}</div>
+                    <div class="pr-5"> {{$followersCount}} {{$followersCount == 1 ? 'follower': 'followers'}} </div>
+                    <div class="pr-5"><strong>{{$followingCount}}</strong> following</div>
                 </div>
                 <div class="pt-5 font-weight-bold">{{$user->profile->title}}</div>
                 <div>{{$user->profile->description}}</div>
@@ -34,7 +34,7 @@
         </div>
         <div class="row pt-5">
             @foreach($user->posts as $post)
-                <div class="col-4">
+                <div class="col-4 pt-3">
                     <a href="/post/{{$post->id}}">
                         <img class="w-100" src="{{$post->postImageResize()}}"/>
                     </a>
