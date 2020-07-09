@@ -9,14 +9,8 @@ use Intervention\Image\Facades\Image;
 
 class ProfilesController extends Controller
 {
-    public function index(User $user = null)
+    public function index(User $user)
     {
-        if($user == null && auth()->user()){
-            $user = User::findOrFail(auth()->user()->id);
-        }
-        elseif ($user == null && !(auth()->user())){
-            return redirect('/login');
-        }
         $follows = (auth()->user()) ? auth()->user()->following->contains($user->id) : false;
 
         $postCount = Cache::remember('post.count.' . $user->id, now()->addSeconds(30), function () use ($user) {
@@ -30,7 +24,14 @@ class ProfilesController extends Controller
         });
         return view('profiles.index', compact('user', 'follows', 'postCount', 'followersCount', 'followingCount'));
     }
-
+    public function myAccount(){
+        if(auth()->user()){
+          return redirect('/profile/'.auth()->user()->id);
+        }
+        else{
+            return redirect('/login');
+        }
+    }
     public function edit(User $user)
     {
         $this->authorize('update', $user->profile);
