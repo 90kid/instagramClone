@@ -24,14 +24,12 @@ class ProfilesController extends Controller
         });
         return view('profiles.index', compact('user', 'follows', 'postCount', 'followersCount', 'followingCount'));
     }
-    public function myAccount(){
-        if(auth()->user()){
-          return redirect('/profile/'.auth()->user()->id);
-        }
-        else{
-            return redirect('/login');
-        }
+
+    public function myAccount()
+    {
+        return auth()->user() ? $this->index(auth()->user()) : redirect('/login');
     }
+
     public function edit(User $user)
     {
         $this->authorize('update', $user->profile);

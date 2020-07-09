@@ -15,10 +15,10 @@
                         </div>
                         <div>
                             <div class="d-flex font-weight-bold">
-                                <a class="pt-2" href="/profile/{{ $post->user->id }}">
+                                <a class="pt-2" href="/profile/{{ $post->user->username }}">
                                     <span class="text-dark">{{ $post->user->username }}</span>
                                 </a>
-                                <follow-button user-id="{{$post->user->id}}" follows="{{$follows}}"></follow-button>
+                                <follow-button user-id="{{$post->user->username}}" follows="{{$follows}}"></follow-button>
                             </div>
                         </div>
                     </div>
@@ -27,7 +27,7 @@
 
                     <p>
                     <span class="font-weight-bold">
-                        <a href="/profile/{{ $post->user->id }}">
+                        <a href="/profile/{{ $post->user->username }}">
                             <span class="text-dark">{{ $post->user->username }}</span>
                         </a>
                     </span> {{ $post->title }}

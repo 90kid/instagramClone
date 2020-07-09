@@ -13,14 +13,14 @@
                 <div class="d-flex justify-content-between align-items-baseline ">
                     <div class="d-flex align-items-center">
                         <h1>{{$user->username}}</h1>
-                        <follow-button user-id="{{$user->id}}" follows="{{$follows}}"></follow-button>
+                        <follow-button user-id="{{$user->username}}" follows="{{$follows}}"></follow-button>
                     </div>
                     @can('update', $user->profile)
                         <a href="/post/create">Add new post</a>
                     @endcan
                 </div>
                 @can('update', $user->profile)
-                    <a href="/profile/{{$user->id}}/edit">Edit profile</a>
+                    <a href="/profile/{{$user->username}}/edit">Edit profile</a>
                 @endcan
                 <div class="d-flex">
                     <div class="pr-5"><strong>{{$postCount}} </strong> {{$postCount == 1 ? 'post' : 'posts'}}</div>
