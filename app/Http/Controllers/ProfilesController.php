@@ -9,8 +9,14 @@ use Intervention\Image\Facades\Image;
 
 class ProfilesController extends Controller
 {
-    public function index(User $user)
+    public function index(User $user = null)
     {
+        if($user == null && auth()->user()){
+            $user = User::findOrFail(auth()->user()->id);
+        }
+        elseif ($user == null && !(auth()->user())){
+            return redirect('/login');
+        }
         $follows = (auth()->user()) ? auth()->user()->following->contains($user->id) : false;
 
         $postCount = Cache::remember('post.count.' . $user->id, now()->addSeconds(30), function () use ($user) {
